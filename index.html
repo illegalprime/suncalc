@@ -1,0 +1,25 @@
+<html><head>
+    <script type='text/javascript' src='suncalc.js'></script>
+</head><body>
+    <script charset='utf-8' type='text/javascript'>
+        //var times = SunCalc.getTimes(new Date(), 33.7550, -84.3900);
+        function getPosition() {
+            var sunrisePos = SunCalc.getPosition(new Date(), 33.7550, -84.3900);
+            var azimuth  = sunrisePos.azimuth  * 180 / Math.PI;
+            var altitude = sunrisePos.altitude * 180 / Math.PI;
+
+            document.getElementById("output").innerHTML = ("Azimuth:  " + (180 + azimuth) + "<br/>"
+                         + "Altitude: " + (altitude)      );
+
+            setTimeout(function(){
+                getPosition();
+            }, 100);
+        }
+
+        setTimeout(function(){
+            getPosition();
+        }, 100);
+
+    </script>
+    <h1 id="output"></h1>
+</body></html>
